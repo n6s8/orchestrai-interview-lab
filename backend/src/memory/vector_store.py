@@ -102,6 +102,33 @@ class VectorStore(MemoryInterface):
         )
         return True
     
+    async def count_candidate_sessions(self, candidate_name: str) -> int:
+        """Count unique past interview sessions for a specific candidate using metadata filter."""
+        try:
+            from qdrant_client.http.models import Filter, FieldCondition, MatchValue
+            results, _ = self.client.scroll(
+                collection_name=self.collection_name,
+                scroll_filter=Filter(
+                    must=[
+                        FieldCondition(
+                            key="metadata.candidate",
+                            match=MatchValue(value=candidate_name)
+                        )
+                    ]
+                ),
+                limit=1000,
+                with_payload=True
+            )
+            session_ids = set()
+            for point in results:
+                sid = point.payload.get("metadata", {}).get("session_id", "")
+                if sid:
+                    session_ids.add(sid)
+            return len(session_ids)
+        except Exception as e:
+            print(f"⚠️ count_candidate_sessions error: {e}")
+            return 0
+
     async def get_session_history(self, session_id: str, limit: int = 50) -> List[MemoryEntry]:
         results = self.client.scroll(
             collection_name=self.collection_name,

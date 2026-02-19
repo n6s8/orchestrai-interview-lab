@@ -1,52 +1,33 @@
 from enum import Enum
 
-class InterviewState(str, Enum):
-    INIT = "INIT"
-    RESUME_ANALYSIS = "RESUME_ANALYSIS"
-    SKILL_PROFILING = "SKILL_PROFILING"
-    DSA_PHASE = "DSA_PHASE"
-    SYSTEM_DESIGN_PHASE = "SYSTEM_DESIGN_PHASE"
-    BEHAVIORAL_PHASE = "BEHAVIORAL_PHASE"
-    CODE_EVALUATION = "CODE_EVALUATION"
-    CROSS_AGENT_DEBATE = "CROSS_AGENT_DEBATE"
-    FINAL_DECISION = "FINAL_DECISION"
-    REPORT_GENERATION = "REPORT_GENERATION"
-    COMPLETED = "COMPLETED"
+class InterviewState(Enum):
+    INIT = "init"
+    RESUME_ANALYSIS = "resume_analysis"
+    DSA_PHASE = "dsa_phase"
+    SYSTEM_DESIGN_PHASE = "system_design_phase"
+    BEHAVIORAL_PHASE = "behavioral_phase"
+    CROSS_AGENT_DEBATE = "cross_agent_debate"
+    FINAL_DECISION = "final_decision"
+    COMPLETED = "completed"
 
-class AgentType(str, Enum):
-    RECRUITER = "RECRUITER"
-    DSA_INTERVIEWER = "DSA_INTERVIEWER"
-    SYSTEM_DESIGN = "SYSTEM_DESIGN"
-    BEHAVIORAL = "BEHAVIORAL"
-    CODE_EVALUATOR = "CODE_EVALUATOR"
-    HALLUCINATION_DETECTOR = "HALLUCINATION_DETECTOR"
-    CRITIC = "CRITIC"
-    FINAL_DECISION = "FINAL_DECISION"
+class AgentType(Enum):
+    RECRUITER = "recruiter"
+    DSA_INTERVIEWER = "dsa_interviewer"
+    CODE_EVALUATOR = "code_evaluator"
+    SYSTEM_DESIGN = "system_design"
+    BEHAVIORAL = "behavioral"
+    HALLUCINATION_DETECTOR = "hallucination_detector"
+    CRITIC = "critic"
+    FINAL_DECISION = "final_decision"
 
-class MessageType(str, Enum):
-    QUESTION = "QUESTION"
-    ANSWER = "ANSWER"
-    EVALUATION = "EVALUATION"
-    EVALUATION_REQUEST = "EVALUATION_REQUEST"
-    DEBATE_CONTRIBUTION = "DEBATE_CONTRIBUTION"
-    SCORE_UPDATE = "SCORE_UPDATE"
-    STATE_TRANSITION = "STATE_TRANSITION"
-    TOOL_CALL = "TOOL_CALL"
-    MEMORY_RETRIEVAL = "MEMORY_RETRIEVAL"
+class MessageType(Enum):
+    QUESTION = "question"
+    ANSWER = "answer"
+    EVALUATION = "evaluation"
+    HINT = "hint"
+    FEEDBACK = "feedback"
 
-class DifficultyLevel(str, Enum):
+class DifficultyLevel(Enum):
     EASY = "EASY"
     MEDIUM = "MEDIUM"
     HARD = "HARD"
-
-class QuestionCategory(str, Enum):
-    ARRAY = "ARRAY"
-    STRING = "STRING"
-    LINKED_LIST = "LINKED_LIST"
-    TREE = "TREE"
-    GRAPH = "GRAPH"
-    DYNAMIC_PROGRAMMING = "DYNAMIC_PROGRAMMING"
-    GREEDY = "GREEDY"
-    BACKTRACKING = "BACKTRACKING"
-    SYSTEM_DESIGN = "SYSTEM_DESIGN"
-    BEHAVIORAL = "BEHAVIORAL"

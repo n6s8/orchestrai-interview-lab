@@ -18,7 +18,7 @@ class InterviewContext(BaseModel):
     candidate_name: str
     current_state: InterviewState = InterviewState.INIT
     candidate_resume: Optional[str] = None
-    skill_profile: Optional[Dict[str, Any]] = None
+    skill_profile: Dict[str, Any] = {}          # FIX: was Optional[Dict] = None
     difficulty_level: DifficultyLevel = DifficultyLevel.MEDIUM
     current_question: Optional[Dict[str, Any]] = None
     candidate_answers: List[str] = []
